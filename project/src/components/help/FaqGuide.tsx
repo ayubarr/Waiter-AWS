@@ -52,6 +52,16 @@ const FaqGuide: React.FC = () => {
           <li>
             <details className="group">
               <summary className="cursor-pointer text-lg font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600">
+                Изменение статуса заказа
+              </summary>
+              <p className="mt-2 text-gray-600 dark:text-gray-400">
+                Вы можете изменять статус заказа в зависимости от его состояния. Например, если заказ готов, вы можете установить статус "Готов". Это поможет вам отслеживать выполнение заказов и управлять ими более эффективно.
+              </p>
+            </details>
+          </li>
+          <li>
+            <details className="group">
+              <summary className="cursor-pointer text-lg font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600">
                 Оплата заказа
               </summary>
               <p className="mt-2 text-gray-600 dark:text-gray-400">

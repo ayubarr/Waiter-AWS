@@ -13,10 +13,12 @@ import UserProfile from './components/user/UserProfile';
 import AdminSettings from './components/admin/AdminSettings';
 import LoginForm from './components/auth/LoginForm';
 import { useAuth } from './context/AuthContext';
+import FaqGuide from './components/help/FaqGuide';
 
 const AppContent: React.FC = () => {
   const { user } = useAuth();
   const [activeView, setActiveView] = useState('tables');
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   if (!user) {
     return <LoginForm />;
@@ -30,6 +32,7 @@ const AppContent: React.FC = () => {
           activeView={activeView} 
           setActiveView={setActiveView}
           isAdmin={user.role === 'admin'}
+          onHelpClick={() => setIsHelpOpen(!isHelpOpen)} // Передаём обработчик
         />
         <main className="flex-1 flex bg-gray-100 dark:bg-gray-800 overflow-hidden transition-colors">
           <div className={`flex-1 overflow-auto transition-all ${activeView === 'tables' ? 'w-2/3' : 'w-full'}`}>
@@ -39,6 +42,8 @@ const AppContent: React.FC = () => {
             {activeView === 'billing' && <BillingView />}
             {activeView === 'profile' && <UserProfile />}
             {activeView === 'settings' && user.role === 'admin' && <AdminSettings />}
+            {activeView === 'help' && <FaqGuide />}
+
           </div>
           {activeView === 'tables' && (
             <div className="w-1/3 p-4 overflow-auto">

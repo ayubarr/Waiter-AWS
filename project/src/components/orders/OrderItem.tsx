@@ -60,9 +60,12 @@ const OrderItem: React.FC<OrderItemProps> = ({ item }) => {
         </div>
         <div className="text-right">
           <div className="font-semibold">${(item.menuItem.price * item.quantity).toFixed(2)}</div>
-          <div className="mt-1" onClick={handleStatusChange}>
+          <button 
+            className="mt-1 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors"
+            onClick={handleStatusChange}
+          >
             {getStatusBadge()}
-          </div>
+          </button>
         </div>
       </div>
 

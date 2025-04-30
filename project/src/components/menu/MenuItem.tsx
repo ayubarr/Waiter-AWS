@@ -41,7 +41,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
       <div className="p-4">
         <div className="flex justify-between items-start">
           <h3 className="text-lg font-semibold dark:text-white">{item.name}</h3>
-          <span className="font-bold text-blue-600 dark:text-blue-400">${item.price.toFixed(2)}</span>
+          <span className="font-bold text-blue-600 dark:text-blue-400">{item.price} ₽</span>
         </div>
         
         <p className="text-gray-600 dark:text-gray-300 text-sm mt-1 line-clamp-2">{item.description}</p>
@@ -93,34 +93,30 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
                 </button>
               </div>
             </div>
-            
-            <Tooltip content="Необязательное поле. Укажите особые пожелания к приготовлению блюда">
               <div>
                 <textarea
                   placeholder="Особые пожелания..."
                   className="w-full p-2 border rounded-md text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                   value={specialRequests}
                   onChange={(e) => setSpecialRequests(e.target.value)}
-                  rows={2}
+                  rows={3}
+                  style={{ minWidth: '100%' }}
                 />
               </div>
-            </Tooltip>
             
-            <div className="flex space-x-2">
+            <div className="flex justify-between space-x-4">
               <button 
-                className="flex-1 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white py-2 rounded-md hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors"
+                className="w-1/2 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white py-2 rounded-md hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors"
                 onClick={() => setShowAddForm(false)}
               >
                 Отмена
               </button>
-              <Tooltip content={`Добавить ${quantity}x "${item.name}" в заказ${activeTable ? ` для стола ${activeTable.number}` : ''}`}>
                 <button 
-                  className="flex-1 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors"
+                  className="w-1/2 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors"
                   onClick={handleAddToOrder}
                 >
                   В заказ
                 </button>
-              </Tooltip>
             </div>
           </div>
         )}

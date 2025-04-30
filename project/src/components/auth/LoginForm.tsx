@@ -75,7 +75,7 @@ const LoginForm: React.FC = () => {
         
         <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
           <p>Для входа используйте:</p>
-          <p>Админ: Admin / Admins2@#</p>
+          <p>Админ: Admin / Admin123</p>
           <p>Официант: Waiter / Waiter123</p>
         </div>
       </div>

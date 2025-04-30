@@ -8,7 +8,7 @@ const OrdersView: React.FC = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-6">Заказы</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Заказы</h2>
       
       {pendingOrders.length === 0 ? (
         <p className="text-gray-500 text-center py-8">Нет активных заказов</p>

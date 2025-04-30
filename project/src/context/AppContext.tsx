@@ -21,7 +21,7 @@ interface AppContextProps {
   updateTable: (table: Table) => void;
   updateMenuItem: (item: MenuItem) => void;
   addTable: () => void;
-  addMenuItem: () => void;
+  addMenuItem: (item: MenuItem) => void;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -304,15 +304,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setTables(prev => [...prev, newTable]);
   };
 
-  const addMenuItem = () => {
-    const newItem: MenuItem = {
-      id: menuItems.length + 1,
-      name: 'Новое блюдо',
-      price: 0,
-      category: 'Основные блюда',
-      description: '',
-    };
-    setMenuItems(prev => [...prev, newItem]);
+  const addMenuItem = (item: MenuItem) => {
+    setMenuItems((prev) => [...prev, item]);
   };
 
   return (

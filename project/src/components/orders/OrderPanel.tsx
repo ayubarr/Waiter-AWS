@@ -4,6 +4,8 @@ import OrderItem from './OrderItem';
 import { ArrowLeft, CreditCard, Receipt, Trash2, X } from 'lucide-react';
 import Tooltip from '../common/Tooltip';
 
+
+
 const OrderPanel: React.FC = () => {
   const { 
     activeTable, 
@@ -85,39 +87,33 @@ const OrderPanel: React.FC = () => {
           <span className="font-bold dark:text-white">${calculateTotal().toFixed(2)}</span>
         </div>
         
-        <div className="grid grid-cols-2 gap-2 mt-4">
-          <Tooltip content="Оплата наличными">
-            <button 
-              className="py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center"
-              onClick={() => handlePayment('cash')}
-              disabled={currentOrder.items.length === 0}
-            >
-              <Receipt size={18} className="mr-2" />
-              Наличные
-            </button>
-          </Tooltip>
-          <Tooltip content="Оплата картой">
-            <button 
-              className="py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center"
-              onClick={() => handlePayment('card')}
-              disabled={currentOrder.items.length === 0}
-            >
-              <CreditCard size={18} className="mr-2" />
-              Карта
-            </button>
-          </Tooltip>
-        </div>
-        
-        <Tooltip content="Отменить текущий заказ">
+        <div className="grid grid-cols-2 gap-4 mt-4">
           <button 
-            className="mt-2 w-full py-2 border border-red-500 text-red-500 rounded-md hover:bg-red-50 transition-colors flex items-center justify-center"
-            onClick={handleCancelOrder}
+            className="py-3 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+            onClick={() => handlePayment('cash')}
             disabled={currentOrder.items.length === 0}
           >
-            <Trash2 size={18} className="mr-2" />
-            Отменить заказ
+            <Receipt size={20} className="mr-2" />
+            Наличные
           </button>
-        </Tooltip>
+          <button 
+            className="py-3 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+            onClick={() => handlePayment('card')}
+            disabled={currentOrder.items.length === 0}
+          >
+            <CreditCard size={20} className="mr-2" />
+            Карта
+          </button>
+        </div>
+        
+        <button 
+          className="mt-4 w-full py-3 px-6 border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition-colors flex items-center justify-center"
+          onClick={handleCancelOrder}
+          disabled={currentOrder.items.length === 0}
+        >
+          <Trash2 size={20} className="mr-2" />
+          Отменить заказ
+        </button>
       </div>
     </div>
   );

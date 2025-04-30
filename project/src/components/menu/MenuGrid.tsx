@@ -6,11 +6,15 @@ import { Search } from 'lucide-react';
 
 const MenuGrid: React.FC = () => {
   const { menuItems } = useAppContext();
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('Все');
   const [searchQuery, setSearchQuery] = useState('');
 
+  const localizedCategories = categories.map((category) =>
+    category === 'All' ? 'Все' : category
+  );
+
   const filteredItems = menuItems.filter(item => {
-    const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
+    const matchesCategory = selectedCategory === 'Все' || item.category === selectedCategory;
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          item.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
@@ -18,11 +22,10 @@ const MenuGrid: React.FC = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Меню</h2>
-      
+      <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Меню</h2>      
       <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex flex-wrap gap-2">
-          {categories.map(category => (
+          {localizedCategories.map(category => (
             <button
               key={category}
               className={`px-4 py-2 rounded-full text-sm ${

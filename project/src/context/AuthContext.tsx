@@ -37,7 +37,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
 
   const login = (username: string, password: string) => {
-    if (username === 'Admin' && password === 'Admins2@#') {
+    if (username === 'Admin' && password === 'Admin123') {
       setUser(defaultUsers[0]);
       return true;
     } else if (username === 'Waiter' && password === 'Waiter123') {
